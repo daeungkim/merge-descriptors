@@ -44,16 +44,33 @@ function merge (dest, src, redefine) {
     // Default to true
     redefine = true
   }
+  /**
+   * merge-descriptors함수를 사용하기 위해서는 기본적으로 인자 두개를 넣어주어야함
+   * redefine의 경우 디폴트 값은 true로 설정한다.
+   */
+
+  /**
+   * src에 있는 프로퍼티가 dest에도 있는경우
+   * redefine이 true이면 src에 있는 프로퍼티를 dest로 복사한다.
+   * redefine이 false이면 src에 있는 프로퍼티를 dest로 복사하지 않는다.
+   */
 
   Object.getOwnPropertyNames(src).forEach(function forEachOwnPropertyName (name) {
     if (!redefine && hasOwnProperty.call(dest, name)) {
       // Skip descriptor
       return
     }
+    /**
+     * redefine이 false이고 dest에 src의 프로퍼티와 동일한 프로퍼티가 있는경우
+     * 복사를 하지 않는다.
+     */
 
     // Copy descriptor
     var descriptor = Object.getOwnPropertyDescriptor(src, name)
     Object.defineProperty(dest, name, descriptor)
+    /**
+     * src의 프로퍼티를 dest에 복사한다.
+     */
   })
 
   return dest
