@@ -22,6 +22,12 @@ module.exports = merge
 var hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
+ * hasOwnProperty : 개체가 특정 프로퍼티를 소유하고 있는지 판단하는데 사용한다. / 개체의 프로토타입 체인을 확인하지 않는다.
+ */
+
+/**
+ * 굳이 Object.prototype.hasOwnProperty를 사용하는 이유
+ *
  * Object.create(null)을 통해 개체를 만든경우 데이터 타입은 개체이지만 prototype이 undefined로 설정이 됨
  * 따라서 hasOwnProperty()함수에 접근할 수 없다.
  *
@@ -67,6 +73,9 @@ function merge (dest, src, redefine) {
 
   Object.getOwnPropertyNames(src).forEach(function forEachOwnPropertyName (name) {
     if (!redefine && hasOwnProperty.call(dest, name)) {
+      /**
+       * Function.prototype.call : 첫번째 매개변수를 this, 나머지 매개변수를 인수로 하여 함수를 호출한다.
+       */
       // Skip descriptor
       return
     }
@@ -77,8 +86,17 @@ function merge (dest, src, redefine) {
 
     // Copy descriptor
     var descriptor = Object.getOwnPropertyDescriptor(src, name)
+    /**
+     * Object.getOwnPropertyDescriptor : 주어진 개체의 프로퍼티에 대한 속성 설명자(descriptor)를 반환한다.
+     */
     Object.defineProperty(dest, name, descriptor)
     /**
+<<<<<<< HEAD
+=======
+     * Object.defineProperty : 개체에 직접 새로운 속성을 정의하거나 이미 존재하는 속성을 수정한 후, 그 개체를 반환한다.
+     */
+    /**
+>>>>>>> 31cb9fe65b4f6923e034dcc06825cedb95ec3574
      * src의 프로퍼티를 dest에 복사한다.
      */
   })
