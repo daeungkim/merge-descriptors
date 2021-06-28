@@ -28,7 +28,7 @@ var hasOwnProperty = Object.prototype.hasOwnProperty
  * 또한 자바스크립트의 경우 hasOwnProperty 프로퍼티를 보호하지 않는다.
  * 따라서 해당 프로퍼티를 얼마든지 수정할 수 있다.
  *
- * https://stackoverflow.com/questions/12017693/why-use-object-prototype-hasownproperty-callmyobj-prop-instead-of-myobj-hasow
+ * https://stackoverflow.com/questions/12017693/why-use-object-prototype-hasownproperty-callmyobj-prop-instead-of-myobj-hasow 참고
  */
 
 /**
